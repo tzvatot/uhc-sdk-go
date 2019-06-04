@@ -56,6 +56,9 @@ func (c *Connection) RoundTrip(request *http.Request) (response *http.Response, 
 	// it in the log:
 	before := time.Now()
 	response, err = c.send(ctx, request)
+	if err != nil {
+		return
+	}
 	after := time.Now()
 	elapsed := after.Sub(before)
 
